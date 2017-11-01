@@ -14,7 +14,7 @@
 		[bool]$InstallGooglechrome=0,
 		[bool]$InstallPutty=0,
 		[bool]$Install7Zip=0,
-                [bool]$InstallTomcat=0,
+                [bool]$InstallPostgreSQL=0,
 		[string]$WebServerPort='',
 		[string]$WebServerPackage=''
 	)
@@ -127,10 +127,10 @@
 	# $InstallTomcat = $env:installtomcat
 	# $InstallWebSphere = $env:installwebsphere
 	# $InstallMySQL = $env:installmysql
+        # $InstallPostgreSQL = $env:installpostgresql
 	# $InstallGooglechrome = $env:installgooglechrome
 	# $InstallPutty = $env:installputty
 	# $Install7Zip = $env:install7zip
-        # $InstallTomcat = $env:installtomcat
 	# $WebServerPort = $env:webserverport
 	# $WebServerPackage = $env:webserverpackage
 
@@ -205,5 +205,26 @@
 		Write-Output $ErrorMessage
 
           }
-                
                
+         try {
+
+               If($InstallPostgreSQL -eq 1)
+               {
+                    <# PostgreSQL application #>
+                     choco install postgresql -y
+                    
+               }
+
+             } 
+         
+          catch 
+        {
+                 
+		Write-Output "Unable to install postgresql "
+		$ErrorMessage = $_.Exception.Message
+		$FailedItem = $_.Exception.ItemName
+		Write-Output $ErrorMessage
+
+          }
+               
+         
