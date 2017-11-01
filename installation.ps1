@@ -1,6 +1,6 @@
 <# Installing additional Components like
 	IIS, Tomcat, Websphere, MySQL softwares and
-	Google Chrome browser, Putty, 7Zip, Tomcat utilities
+	Google Chrome browser, Putty, 7Zip, Tomcat,         PostgreSQL utilities
 	in Azure windows based vm images
 #>
 
