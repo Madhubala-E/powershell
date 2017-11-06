@@ -1,6 +1,6 @@
 <# Installing additional Components like
 	IIS, Tomcat, Websphere, MySQL softwares and
-	Google Chrome browser, Putty, 7Zip, Tomcat,         PostgreSQL utilities
+	Google Chrome browser,7Zip, Tomcat utilities
 	in Azure windows based vm images
 #>
 
@@ -12,9 +12,7 @@
 		[bool]$InstallWebSphere=0,
 		[bool]$InstallMySQL=0,
 		[bool]$InstallGooglechrome=0,
-		[bool]$InstallPutty=0,
 		[bool]$Install7Zip=0,
-                [bool]$InstallPostgreSQL=0,
 		[string]$WebServerPort='',
 		[string]$WebServerPackage=''
 	)
@@ -127,9 +125,7 @@
 	# $InstallTomcat = $env:installtomcat
 	# $InstallWebSphere = $env:installwebsphere
 	# $InstallMySQL = $env:installmysql
-        # $InstallPostgreSQL = $env:installpostgresql
 	# $InstallGooglechrome = $env:installgooglechrome
-	# $InstallPutty = $env:installputty
 	# $Install7Zip = $env:install7zip
 	# $WebServerPort = $env:webserverport
 	# $WebServerPackage = $env:webserverpackage
@@ -152,20 +148,7 @@
 		Write-Output $ErrorMessage
 	}
 
-	try {
-		If($InstallPutty -eq 1)
-		{
-			<# Putty application #>
-			choco install putty.install -y
-		}
-	}
-	catch
-	{
-		Write-Output "Unable to install Putty application"
-		$ErrorMessage = $_.Exception.Message
-		$FailedItem = $_.Exception.ItemName
-		Write-Output $ErrorMessage
-	}
+	
 
 	try {
 		If($InstallMySQL -eq 1)
@@ -206,25 +189,4 @@
 
           }
                
-         try {
-
-               If($InstallPostgreSQL -eq 1)
-               {
-                    <# PostgreSQL application #>
-                     choco install postgresql -y
-                    
-               }
-
-             } 
-         
-          catch 
-        {
-                 
-		Write-Output "Unable to install postgresql "
-		$ErrorMessage = $_.Exception.Message
-		$FailedItem = $_.Exception.ItemName
-		Write-Output $ErrorMessage
-
-          }
-               
-         
+        
