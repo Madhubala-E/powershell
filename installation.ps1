@@ -15,7 +15,7 @@ Install-WindowsFeature -Name DHCP -IncludeManagementTools
 Get-NetIPConfiguration
 
 <# Adding DHCP server scope #>
-Add-DhcpServerv4Scope -Name DHCPClient -StartRange 10.10.2.1 -EndRange 10.10.2.5 -SubnetMask 255.255.255.0
+Add-DhcpServerv4Scope -Name DHCPClient -StartRange 10.10.0.1 -EndRange 10.10.0.5 -SubnetMask 255.255.255.0
 
 
 
