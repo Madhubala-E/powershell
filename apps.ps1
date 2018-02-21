@@ -1,7 +1,7 @@
 param
 	(
-	 [bool]$InstallGooglechrome,
-         [bool]$InstallPutty 	
+	 [int]$InstallGooglechrome,
+         [int]$InstallPutty 	
 	)
 
     
