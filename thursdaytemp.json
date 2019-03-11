@@ -8,11 +8,11 @@
         },
         "resourceSuffix": {
             "type": "string",
-            "defaultValue": "3"
+            "defaultValue": "5"
         },
         "location": {
             "type": "string",
-            "defaultValue": "eastus"
+            "defaultValue": "eastus2"
         },
         "virtualMachineSize": {
             "type": "string",
@@ -426,7 +426,7 @@
             }
         },
         {
-            "condition": "[equals(parameters('ManagedDiskStorage'), 'No')]",
+            "condition": "[equals(parameters('ManagedDiskStorage'), 'Yes')]",
             "apiVersion": "2017-03-30",
             "type": "Microsoft.Compute/disks",            
             "name": "[concat(variables('virtualMachineName'), '_Datadisk')]",
