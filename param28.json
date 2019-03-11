@@ -6,7 +6,7 @@
             "value": "monday"
         },
         "resourceSuffix": {
-            "value": "1"
+            "value": "3"
         },
         "location": {
             "value": "eastus"
@@ -69,10 +69,10 @@
             "value": "powershell -ExecutionPolicy Unrestricted -File"
         },
         "enableAvailabilitySet": {
-            "value": "No"
+            "value": "Yes"
         },
         "ManagedDiskStorage": {
-            "value": "No"
+            "value": "Yes"
         },        
         "storageAccountType": {
             "value": "Standard_LRS"

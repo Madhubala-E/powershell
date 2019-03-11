@@ -8,7 +8,7 @@
         },
         "resourceSuffix": {
             "type": "string",
-            "defaultValue": "1"
+            "defaultValue": "3"
         },
         "location": {
             "type": "string",
@@ -97,7 +97,7 @@
                 "Yes",
                 "No"
             ],
-            "defaultValue": "No",
+            "defaultValue": "Yes",
             "metadata": {
                 "description": "Select whether the VM should be in Availability Set or not."
             }
@@ -108,7 +108,7 @@
                 "Yes",
                 "No"
             ],
-            "defaultValue": "No",
+            "defaultValue": "Yes",
             "metadata": {
                 "description": "Enable or Disable storage account"
             }
