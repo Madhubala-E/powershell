@@ -6,10 +6,10 @@
             "value": "monday"
         },
         "resourceSuffix": {
-            "value": "1"
+            "value": "2"
         },
         "location": {
-            "value": "eastus2"
+            "value": "westus"
         },
         "virtualMachineSize": {
             "value": "Standard_A2"
@@ -69,7 +69,7 @@
             "value": "powershell -ExecutionPolicy Unrestricted -File"
         },
         "enableAvailabilitySet": {
-            "value": "Yes"
+            "value": "No"
         },
         "ManagedDiskStorage": {
             "value": "Yes"

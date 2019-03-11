@@ -8,11 +8,11 @@
         },
         "resourceSuffix": {
             "type": "string",
-            "defaultValue": "1"
+            "defaultValue": "2"
         },
         "location": {
             "type": "string",
-            "defaultValue": "eastus2"
+            "defaultValue": "westus"
         },
         "virtualMachineSize": {
             "type": "string",
@@ -97,7 +97,7 @@
                 "Yes",
                 "No"
             ],
-            "defaultValue": "Yes",
+            "defaultValue": "No",
             "metadata": {
                 "description": "Select whether the VM should be in Availability Set or not."
             }
