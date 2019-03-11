@@ -6,7 +6,7 @@
             "value": "monday"
         },
         "resourceSuffix": {
-            "value": "5"
+            "value": "1"
         },
         "location": {
             "value": "eastus2"
@@ -136,6 +136,9 @@
         },                
         "osType": {
             "value": "Windows"
-        }  	
+        },
+        "storageAccountKind": {
+            "value": "Storage"
+          }
   }
 }

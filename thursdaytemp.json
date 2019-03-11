@@ -8,7 +8,7 @@
         },
         "resourceSuffix": {
             "type": "string",
-            "defaultValue": "5"
+            "defaultValue": "1"
         },
         "location": {
             "type": "string",
@@ -229,6 +229,10 @@
                 "description": "Size of the Data Disk"
               }
         },
+        "diskNameSalt": {
+            "type": "string",
+            "defaultValue": "201903071941560"
+        }, 
         "osType": {
             "type": "string",
             "allowedValues": [
@@ -236,7 +240,11 @@
                 "Linux"
             ],
             "defaultValue": "Windows"
-        }
+        },
+        "storageAccountKind": {
+            "type": "string",
+            "defaultValue": "Storage"
+          }
     },
     "variables": {
       "resourceGroup": "[concat(parameters('resourcePrefix'), parameters('resourceSuffix'))]",
@@ -255,6 +263,7 @@
           "timeZone": "[parameters('vmTimeZone')]"
         }
       },
+      "storageContainerUri": "[concat(concat('https://', variables('storageAccountName'), '.blob.core.windows.net/'), 'vhds/')]",
       "virtualNetworkName": "[concat(parameters('resourcePrefix'), parameters('resourceSuffix'), '-vnet')]",
       "subnetName": "[concat(parameters('resourcePrefix'), parameters('resourceSuffix'), '-subnet')]",       
         "extvnetId": "[resourceId(parameters('existingVnetResourceGroupName'),'Microsoft.Network/virtualNetworks', parameters('existingVnetName'))]",
@@ -293,14 +302,12 @@
                 "availabilitySet": "[if(equals(parameters('enableAvailabilitySet'), 'Yes'), variables('availabilitySetId'), json('null'))]",
                 "storageProfile": {
                     "osDisk": {
-                        "osType": "Windows",
-                        "name": "[variables('OSDiskName')]",
-                        "caching": "ReadWrite",
                         "createOption": "FromImage",
-                        "managedDisk": {
-                          "storageAccountType": "[parameters('diskType')]"
-                        }
-                      },
+                        "vhd": {
+                            "uri": "[concat(variables('storageContainerUri'), variables('virtualMachineName'), parameters('diskNameSalt'), '.vhd')]"
+                        },
+                        "name": "[variables('virtualMachineName')]"
+                    },
                     "imageReference": {
                         "publisher": "[parameters('vmImagePublisher')]",
                         "offer": "[parameters('vmImageOffer')]",
@@ -330,14 +337,17 @@
             }
         },
         {
-            "condition": "[equals(parameters('ManagedDiskStorage'), 'true')]",
-            "apiVersion": "2015-05-01-preview",
+            "condition": "[equals(parameters('ManagedDiskStorage'), 'false')]",
+            "apiVersion": "2018-07-01",
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
-            "properties": {
-              "accountType": "[parameters('storageAccountType')]"
-            }
+            "properties": {},
+            "kind": "[parameters('storageAccountKind')]",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            },
+            "tags": {}
           },                
         {
             "apiVersion": "2015-06-15",
